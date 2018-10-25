@@ -4,6 +4,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import static java.text.MessageFormat.format;
 
 import com.google.common.base.MoreObjects;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -25,7 +26,9 @@ public class WorkResult {
 
   /** Logs the workers name and its computed result to the console (logging handlers). */
   public void log() {
-    LOG.info(format("Result of {0}: {1}", worker.name(), computedSum));
+    if (LOG.isLoggable(Level.INFO)) {
+      LOG.info(format("Result of {0}: {1}", worker.name(), computedSum));
+    }
   }
 
   public WorkerDescriptor worker() {

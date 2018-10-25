@@ -120,11 +120,9 @@ public final class Accumulation {
 
   /* Logs the message if the logger allows verbose logging. */
   private void logVerbose(String message, Object... args) {
-    if (!LOG.isLoggable(Level.INFO)) {
-      return;
+    if (LOG.isLoggable(Level.INFO)) {
+      LOG.info(MessageFormat.format(message, args));
     }
-
-    LOG.info(MessageFormat.format(message, args));
   }
 
   public static Accumulation create(AccumulationConfig config) {
