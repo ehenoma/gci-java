@@ -41,6 +41,7 @@ public final class AccumulationConfig {
 
   public static AccumulationConfig create(
       int workerCount, WorkConfig workConfig, WorkerExecutionPolicy executionPolicy) {
+
     checkNotNull(workConfig);
     checkNotNull(executionPolicy);
     checkArgument(workerCount > 0, "Count must be greater than zero.");
