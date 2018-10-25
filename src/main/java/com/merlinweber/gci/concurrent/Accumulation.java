@@ -1,5 +1,7 @@
 package com.merlinweber.gci.concurrent;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import com.merlinweber.gci.concurrent.worker.ConfigurableWorkerFactory;
 import com.merlinweber.gci.concurrent.worker.WorkResult;
 import com.merlinweber.gci.concurrent.worker.Worker;
@@ -30,8 +32,11 @@ public final class Accumulation {
 
   private Accumulation(AccumulationConfig config) {
     this.config = config;
-    this.workerFactory = config.createWorkerFactory();
     this.submissions = new LinkedTransferQueue<>();
+    this.workerFactory = config.createWorkerFactory();
+
+    workerFactory.setSubmissionQueue(submissions);
+    workerFactory.setWork(config.workConfig());
   }
 
   /**
@@ -109,7 +114,7 @@ public final class Accumulation {
       Worker slave = workerFactory.getInstance(name);
       slave.start();
 
-      logVerbose("Worker {0} has been created.");
+      logVerbose("Worker {0} has been created.", name);
     }
   }
 
@@ -123,6 +128,8 @@ public final class Accumulation {
   }
 
   public static Accumulation create(AccumulationConfig config) {
-    return null;
+    checkNotNull(config);
+
+    return new Accumulation(config);
   }
 }
