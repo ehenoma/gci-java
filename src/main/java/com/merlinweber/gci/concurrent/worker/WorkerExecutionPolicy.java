@@ -3,7 +3,7 @@ package com.merlinweber.gci.concurrent.worker;
 import static com.merlinweber.gci.concurrent.worker.WorkerFactories.explicitlyExecuted;
 
 import java.util.concurrent.Executors;
-import java.util.function.Supplier;
+import java.util.function.IntFunction;
 
 /**
  * Common policies that determine how a worker can be started.
@@ -12,21 +12,18 @@ import java.util.function.Supplier;
  */
 public enum WorkerExecutionPolicy {
   /** Exclusively allocates a Thread for every worker. */
-  EXCLUSIVE_THREAD(WorkerFactories::exclusiveThreadPerWorker),
-
-  /* Allocates one thread that is executing all workers sequentially. */
-  SINGLE_THREAD(WorkerFactories::singleThreadExecuted),
+  EXCLUSIVE_THREAD((num) -> WorkerFactories.exclusiveThreadPerWorker()),
 
   /* Allocates a pool of threads which executes the workers.*/
-  THREAD_POOL(() -> explicitlyExecuted(Executors.newCachedThreadPool()));
+  THREAD_POOL((num) -> explicitlyExecuted(Executors.newFixedThreadPool(num)));
 
-  private Supplier<ConfigurableWorkerFactory> workerFactoryCreator;
+  private IntFunction<ConfigurableWorkerFactory> workerFactoryCreator;
 
-  WorkerExecutionPolicy(Supplier<ConfigurableWorkerFactory> workerFactoryCreator) {
+  WorkerExecutionPolicy(IntFunction<ConfigurableWorkerFactory> workerFactoryCreator) {
     this.workerFactoryCreator = workerFactoryCreator;
   }
 
-  public ConfigurableWorkerFactory createFactory() {
-    return workerFactoryCreator.get();
+  public ConfigurableWorkerFactory createFactory(int workerCount) {
+    return workerFactoryCreator.apply(workerCount);
   }
 }

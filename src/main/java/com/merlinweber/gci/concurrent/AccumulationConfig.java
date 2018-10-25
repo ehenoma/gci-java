@@ -24,7 +24,7 @@ public final class AccumulationConfig {
   }
 
   public ConfigurableWorkerFactory createWorkerFactory() {
-    return executionPolicy.createFactory();
+    return executionPolicy.createFactory(workerCount);
   }
 
   public WorkConfig workConfig() {
