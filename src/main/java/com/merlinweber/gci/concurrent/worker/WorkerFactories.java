@@ -34,11 +34,6 @@ public final class WorkerFactories {
     });
   }
 
-  /** Returns an factory that creates workers which work in the current thread. */
-  public static ConfigurableWorkerFactory synchronous() {
-    return explicitlyExecuted(MoreExecutors.directExecutor());
-  }
-
   /**
    * Returns a factory that uses the given executor to start its workers.
    * @param executor Explicit executor that starts workers.

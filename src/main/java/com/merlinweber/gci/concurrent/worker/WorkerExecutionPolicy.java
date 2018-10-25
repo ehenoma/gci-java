@@ -14,9 +14,6 @@ public enum WorkerExecutionPolicy {
   /** Exclusively allocates a Thread for every worker. */
   EXCLUSIVE_THREAD(WorkerFactories::exclusiveThreadPerWorker),
 
-  /* Executes the Worker blocking in the current thread. */
-  SYNCHRONOUS(WorkerFactories::synchronous),
-
   /* Allocates one thread that is executing all workers sequentially. */
   SINGLE_THREAD(WorkerFactories::singleThreadExecuted),
 
