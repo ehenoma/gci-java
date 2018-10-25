@@ -23,10 +23,7 @@ abstract class AbstractConfigurableWorkerFactory implements ConfigurableWorkerFa
   // Do nothing but implement for derived classes.
   AbstractConfigurableWorkerFactory() {}
 
-  @Override
-  public abstract Worker getInstance(String name);
-
-  protected final Worker getInstance(String name, Executor executor) {
+  final Worker getInstance(String name, Executor executor) {
     return Worker.create(
         executor, work, name, workPermitWaiter, workFinishSignaller, submissionQueue);
   }
