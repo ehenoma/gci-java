@@ -1,0 +1,6 @@
+if (!JavaVersion.current().isJava8Compatible()) {
+  throw new GradleException("Incompatible Java version")
+}
+
+rootProject.name = 'gci'
+
