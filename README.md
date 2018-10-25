@@ -1,7 +1,7 @@
 
 [![Google Code-in](./assets/codein_logo.png)](https://codein.withgoogle.com/)
 
-This code is original and follows the
+This repository is original and follows the
 [student terms](https://codein.withgoogle.com/student-terms/).
 
 ## Concurrent Accumulation
