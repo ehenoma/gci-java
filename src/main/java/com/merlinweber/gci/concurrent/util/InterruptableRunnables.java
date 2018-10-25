@@ -2,7 +2,6 @@ package com.merlinweber.gci.concurrent.util;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-import com.sun.istack.internal.NotNull;
 import javax.annotation.Nullable;
 
 public final class InterruptableRunnables {
@@ -25,7 +24,7 @@ public final class InterruptableRunnables {
       this.message = null;
     }
 
-    private ImmediateInterrupted(@NotNull String message) {
+    private ImmediateInterrupted(String message) {
       checkNotNull(message);
 
       this.message = message;
