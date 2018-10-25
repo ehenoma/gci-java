@@ -41,8 +41,7 @@ public final class AccumulationSolution {
     }
   }
 
-  private static AccumulationConfig tryParseConfig(String[] arguments, Logger logger)
-      throws NumberFormatException {
+  private static AccumulationConfig tryParseConfig(String[] arguments, Logger logger) {
 
     if (arguments.length < 2) {
       return DEFAULT_CONFIG;
