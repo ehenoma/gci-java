@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.Test;
 
-public class InterruptableRunnablesTest {
+class InterruptableRunnablesTest {
 
   @Test
   void checkNoThrow_nothrow() {
