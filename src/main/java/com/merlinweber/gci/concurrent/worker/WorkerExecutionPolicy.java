@@ -12,10 +12,10 @@ import java.util.function.IntFunction;
  */
 public enum WorkerExecutionPolicy {
   /** Exclusively allocates a Thread for every worker. */
-  EXCLUSIVE_THREAD((num) -> WorkerFactories.exclusiveThreadPerWorker()),
+  EXCLUSIVE_THREAD(num -> WorkerFactories.exclusiveThreadPerWorker()),
 
   /* Allocates a pool of threads which executes the workers.*/
-  THREAD_POOL((num) -> explicitlyExecuted(Executors.newFixedThreadPool(num)));
+  THREAD_POOL(num -> explicitlyExecuted(Executors.newFixedThreadPool(num)));
 
   private IntFunction<ConfigurableWorkerFactory> workerFactoryCreator;
 
