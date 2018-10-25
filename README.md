@@ -1,4 +1,3 @@
-# GCI: My solutions to Java tasks
 
 [![Google Code-in](./assets/codein_logo.png)](https://codein.withgoogle.com/)
 
