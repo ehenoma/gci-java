@@ -1,4 +1,7 @@
-apply plugin: 'java'
+plugins {
+  id 'java'
+  id 'org.sonarqube' version '2.6'
+}
 
 group 'com.merlinweber.gci'
 version '1.0'
