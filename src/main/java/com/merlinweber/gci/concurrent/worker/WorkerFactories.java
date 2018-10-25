@@ -48,7 +48,7 @@ public final class WorkerFactories {
   }
 
   /* Delegates an executor to create a factory. */
-  private static class ExplicitlyExecutedFactory extends AbstractWorkerFactory {
+  private static class ExplicitlyExecutedFactory extends AbstractConfigurableWorkerFactory {
     private Executor executor;
 
     private ExplicitlyExecutedFactory(Executor executor) {
