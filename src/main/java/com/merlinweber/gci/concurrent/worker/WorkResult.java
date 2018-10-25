@@ -25,7 +25,7 @@ public class WorkResult {
 
   /** Logs the workers name and its computed result to the console (logging handlers). */
   public void log() {
-    LOG.fine(format("Result of {0}: {1}", worker, computedSum));
+    LOG.info(format("Result of {0}: {1}", worker, computedSum));
   }
 
   public WorkerDescriptor worker() {
