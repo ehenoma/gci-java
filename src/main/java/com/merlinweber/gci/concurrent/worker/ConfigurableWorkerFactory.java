@@ -11,9 +11,6 @@ import java.util.concurrent.TransferQueue;
  */
 public interface ConfigurableWorkerFactory extends WorkerFactory {
 
-  @Override
-  Worker getInstance(String name);
-
   /** Sets the configuration of the work that the Worker should do. */
   void setWork(WorkConfig work);
 
