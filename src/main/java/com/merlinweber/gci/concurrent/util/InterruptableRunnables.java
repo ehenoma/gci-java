@@ -24,12 +24,6 @@ public final class InterruptableRunnables {
       this.message = null;
     }
 
-    private ImmediateInterrupted(String message) {
-      checkNotNull(message);
-
-      this.message = message;
-    }
-
     @Override
     public void run() throws InterruptedException{
       if (message == null) {
