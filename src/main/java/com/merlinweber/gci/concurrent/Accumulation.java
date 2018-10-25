@@ -1,6 +1,6 @@
 package com.merlinweber.gci.concurrent;
 
-import com.merlinweber.gci.concurrent.worker.AbstractWorkerFactory;
+import com.merlinweber.gci.concurrent.worker.ConfigurableWorkerFactory;
 import com.merlinweber.gci.concurrent.worker.WorkResult;
 import com.merlinweber.gci.concurrent.worker.Worker;
 import java.text.MessageFormat;
@@ -23,7 +23,7 @@ public final class Accumulation {
 
   private AccumulationConfig config;
 
-  private AbstractWorkerFactory workerFactory;
+  private ConfigurableWorkerFactory workerFactory;
 
   /* Synchronizer which is used to transfer worker results.*/
   private TransferQueue<WorkResult> submissions;
