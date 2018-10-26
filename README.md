@@ -31,6 +31,10 @@ and then you can run the generated **jar file**:
 java -jar accumulation-1.0.jar 3 10
 ```
 
+This lie will give following output:
+
+![](./assets/cas_console.png)
+
 Arguments are not required nor do they have to be correct.
 If no or invalid arguments are given, the default configuration is used.
 
