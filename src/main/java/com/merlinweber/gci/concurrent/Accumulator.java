@@ -97,13 +97,13 @@ public final class Accumulator {
   private Stream<WorkResult> gatherWorkerResults() throws InterruptedException {
     logVerbose("Gathering Results of the workers...");
 
-    Collection<WorkResult> results = new ArrayList<>(config.workerCount());
+    WorkResult[] results = new WorkResult[config.workerCount()];
     for (int workerIndex = 0; workerIndex < config.workerCount(); workerIndex++) {
       WorkResult submission = submissions.take();
-      results.add(submission);
+      results[workerIndex] = submission;
     }
 
-    return results.stream();
+    return Stream.of(results);
   }
 
   /*
