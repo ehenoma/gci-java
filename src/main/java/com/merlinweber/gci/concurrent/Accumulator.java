@@ -15,8 +15,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Stream;
 
-/** @see AccumulationConfig */
-public final class Accumulation {
+/**
+ * Runs concurrent accumulations with a fixed amount of threads.
+ *
+ * @see Worker
+ * @see AccumulationConfig
+ */
+public final class Accumulator {
 
   private static final Logger LOG = Logger.getLogger("GCI");
 
@@ -30,7 +35,7 @@ public final class Accumulation {
   /* Synchronizer which is used to transfer worker results.*/
   private TransferQueue<WorkResult> submissions;
 
-  private Accumulation(AccumulationConfig config) {
+  private Accumulator(AccumulationConfig config) {
     this.config = config;
     this.submissions = new LinkedTransferQueue<>();
     this.workerFactory = config.createWorkerFactory();
@@ -125,9 +130,9 @@ public final class Accumulation {
     }
   }
 
-  public static Accumulation create(AccumulationConfig config) {
+  public static Accumulator create(AccumulationConfig config) {
     checkNotNull(config);
 
-    return new Accumulation(config);
+    return new Accumulator(config);
   }
 }

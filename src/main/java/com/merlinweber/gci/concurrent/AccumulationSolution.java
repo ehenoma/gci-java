@@ -19,7 +19,7 @@ public final class AccumulationSolution {
   public static void main(String[] arguments) {
     Logger logger = configureLogger();
 
-    Accumulation accumulation = Accumulation.create(parseConfig(arguments, logger));
+    Accumulator accumulation = Accumulator.create(parseConfig(arguments, logger));
     interpretSuccessState(logger, accumulation.tryRun());
   }
 
