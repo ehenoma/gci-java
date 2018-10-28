@@ -31,7 +31,7 @@ and then you can run the generated **jar file**:
 java -jar accumulation-1.0.jar 3 10
 ```
 
-This lie will give following output:
+Executing the above command will give following output:
 
 ![](./assets/cas_console.png)
 
