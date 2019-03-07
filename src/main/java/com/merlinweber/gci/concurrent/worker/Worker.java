@@ -76,11 +76,11 @@ public class Worker {
   private boolean tryWork() {
     try {
       work();
-      return true;
     } catch (InterruptedException exception) {
       Thread.currentThread().interrupt();
       return false;
     }
+    return true;
   }
 
   /* Does the actual accumulation and transfers through the submission queue. */
@@ -89,8 +89,8 @@ public class Worker {
 
     int sum = range(0, work.iterationCount()).reduce(0, this::sumVerbose);
     WorkResult result = WorkResult.create(descriptor, sum);
-
     workFinishSignaller.run();
+    
     submissionQueue.transfer(result);
   }
 
@@ -98,7 +98,6 @@ public class Worker {
     if (LOG.isLoggable(Level.INFO)) {
       LOG.info(format("Worker {0}: Increment {1} by {2}.", descriptor.name(), identity, value));
     }
-
     return identity + value;
   }
 
@@ -125,7 +124,6 @@ public class Worker {
     checkNotNull(submissionQueue);
 
     int ref = referenceCount.getAndIncrement();
-
     WorkerDescriptor descriptor = WorkerDescriptor.create(name, ref);
     return new Worker(
         executor, work, descriptor, workPermitWaiter, workFinishSignaller, submissionQueue);
